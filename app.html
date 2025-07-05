@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Beauty Clinic</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#f8b4d9', secondary: '#c3dafe' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-section {
+            background-image: url('https://readdy.ai/api/search-image?query=elegant%20beauty%20clinic%20interior%20with%20soft%20pastel%20colors%2C%20clean%20minimalist%20design%2C%20white%20marble%20counters%2C%20gentle%20lighting%2C%20plants%2C%20high-end%20beauty%20products%20displayed%2C%20modern%20aesthetic%2C%20warm%20inviting%20atmosphere%2C%20professional%20looking%2C%20luxury%20spa%20feeling%2C%20no%20people%20visible&width=1920&height=1080&seq=1&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.4) 100%);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #f8b4d9;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.02);
+        }
+
+        .custom-checkbox {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 22px;
+            width: 22px;
+            background-color: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
+        }
+
+        .custom-checkbox:hover input~.checkmark {
+            border-color: #f8b4d9;
+        }
+
+        .custom-checkbox input:checked~.checkmark {
+            background-color: #f8b4d9;
+            border-color: #f8b4d9;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .custom-checkbox input:checked~.checkmark:after {
+            display: block;
+        }
+
+        .custom-checkbox .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 11px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e2e8f0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #f8b4d9;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        .date-input::-webkit-calendar-picker-indicator {
+            filter: invert(0.8) sepia(1) saturate(5) hue-rotate(290deg);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Sticky Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+            <a href="#" class="text-3xl font-['Pacifico'] text-primary">Glow</a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-800 hover:text-primary font-medium transition-colors">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-primary font-medium transition-colors">About</a>
+                <a href="#services" class="text-gray-800 hover:text-primary font-medium transition-colors">Services</a>
+                <a href="#gallery" class="text-gray-800 hover:text-primary font-medium transition-colors">Gallery</a>
+                <a href="#booking" class="text-gray-800 hover:text-primary font-medium transition-colors">Book
+                    Appointment</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="tel:+1234567890" class="flex items-center text-gray-800 hover:text-primary">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <span>+1 (234) 567-890</span>
+                </a>
+                <div class="flex items-center space-x-3">
+                    <a href="#"
+                        class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#"
+                        class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-facebook-circle-line"></i>
+                    </a>
+                    <a href="#"
+                        class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-800" id="mobile-menu-button">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full" id="mobile-menu">
+            <div class="container mx-auto px-6 py-3 flex flex-col space-y-4">
+                <a href="#" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">About</a>
+                <a href="#services"
+                    class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Services</a>
+                <a href="#gallery"
+                    class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Gallery</a>
+                <a href="#booking" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Book
+                    Appointment</a>
+
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <a href="tel:+1234567890" class="flex items-center text-gray-800 hover:text-primary">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <i class="ri-phone-line"></i>
+                        </div>
+                        <span>+1 (234) 567-890</span>
+                    </a>
+                    <div class="flex items-center space-x-3">
+                        <a href="#"
+                            class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                            <i class="ri-facebook-circle-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-6 py-16 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
+                        Reveal Your Natural Beauty
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-lg">
+                        Experience luxury skincare treatments and advanced aesthetic procedures tailored to enhance your
+                        unique beauty.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#booking"
+                            class="inline-block bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors shadow-md whitespace-nowrap">
+                            Book Appointment
+                        </a>
+                        <a href="#services"
+                            class="inline-block bg-white text-gray-800 px-8 py-3 !rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition-colors shadow-sm whitespace-nowrap">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Premium Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Discover our range of luxurious treatments designed to rejuvenate your skin and enhance your natural
+                    beauty.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=facial%20treatment%20with%20woman%20getting%20luxury%20skincare%20treatment%2C%20soft%20lighting%2C%20clean%20spa%20environment%2C%20professional%20aesthetician%20hands%20visible%2C%20high-end%20skincare%20products%2C%20relaxing%20atmosphere%2C%20pastel%20colors%2C%20elegant%20setting&width=600&height=400&seq=2&orientation=landscape"
+                            alt="Facial Treatments" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+                                <i class="ri-face-line"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 ml-3">Facial Treatments</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Customized facials to address your specific skin concerns, from hydration to anti-aging.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-900 font-medium">From $89</span>
+                            <a href="#booking"
+                                class="text-primary hover:text-primary-dark font-medium flex items-center">
+                                Learn More
+                                <i class="ri-arrow-right-line ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=botox%20injection%20treatment%2C%20close-up%20of%20professional%20aesthetician%20hands%20with%20syringe%2C%20elegant%20clinical%20setting%2C%20soft%20lighting%2C%20luxury%20medical%20spa%20environment%2C%20clean%20and%20sterile%2C%20pastel%20color%20palette%2C%20high-end%20equipment%20visible&width=600&height=400&seq=3&orientation=landscape"
+                            alt="Botox & Fillers" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+                                <i class="ri-syringe-line"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 ml-3">Botox & Fillers</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Non-surgical treatments to reduce fine lines and restore volume for a youthful appearance.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-900 font-medium">From $299</span>
+                            <a href="#booking"
+                                class="text-primary hover:text-primary-dark font-medium flex items-center">
+                                Learn More
+                                <i class="ri-arrow-right-line ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=laser%20skin%20treatment%2C%20high-tech%20beauty%20procedure%2C%20advanced%20skincare%20technology%2C%20elegant%20clinical%20setting%2C%20soft%20lighting%2C%20luxury%20medical%20spa%20environment%2C%20clean%20and%20modern%20equipment%2C%20aesthetician%20performing%20treatment%2C%20pastel%20color%20palette&width=600&height=400&seq=4&orientation=landscape"
+                            alt="Laser Treatments" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+                                <i class="ri-flashlight-line"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 ml-3">Laser Treatments</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Advanced laser technology to address pigmentation, scarring, and skin texture concerns.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-900 font-medium">From $199</span>
+                            <a href="#booking"
+                                class="text-primary hover:text-primary-dark font-medium flex items-center">
+                                Learn More
+                                <i class="ri-arrow-right-line ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=microdermabrasion%20treatment%2C%20close-up%20of%20professional%20aesthetician%20performing%20skin%20exfoliation%2C%20elegant%20spa%20setting%2C%20soft%20lighting%2C%20luxury%20skincare%20equipment%2C%20clean%20clinical%20environment%2C%20pastel%20colors%2C%20relaxing%20atmosphere&width=600&height=400&seq=5&orientation=landscape"
+                            alt="Microdermabrasion" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+                                <i class="ri-refresh-line"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 ml-3">Microdermabrasion</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Gentle exfoliation treatment that removes dead skin cells for a brighter, smoother
+                            complexion.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-900 font-medium">From $129</span>
+                            <a href="#booking"
+                                class="text-primary hover:text-primary-dark font-medium flex items-center">
+                                Learn More
+                                <i class="ri-arrow-right-line ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=chemical%20peel%20treatment%2C%20close-up%20of%20aesthetician%20applying%20peel%20to%20clients%20face%2C%20elegant%20spa%20setting%2C%20soft%20lighting%2C%20luxury%20skincare%20products%2C%20clean%20clinical%20environment%2C%20pastel%20colors%2C%20professional%20beauty%20treatment&width=600&height=400&seq=6&orientation=landscape"
+                            alt="Chemical Peels" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+                                <i class="ri-drop-line"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 ml-3">Chemical Peels</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Specialized treatments to improve skin texture, reduce discoloration, and minimize fine
+                            lines.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-900 font-medium">From $149</span>
+                            <a href="#booking"
+                                class="text-primary hover:text-primary-dark font-medium flex items-center">
+                                Learn More
+                                <i class="ri-arrow-right-line ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=microblading%20eyebrow%20treatment%2C%20close-up%20of%20aesthetician%20working%20on%20clients%20eyebrows%2C%20elegant%20beauty%20salon%20setting%2C%20soft%20lighting%2C%20precision%20tools%2C%20clean%20clinical%20environment%2C%20pastel%20colors%2C%20professional%20beauty%20procedure&width=600&height=400&seq=7&orientation=landscape"
+                            alt="Microblading" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary">
+                                <i class="ri-brush-line"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 ml-3">Microblading</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Semi-permanent eyebrow enhancement technique for fuller, perfectly shaped brows.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-900 font-medium">From $349</span>
+                            <a href="#booking"
+                                class="text-primary hover:text-primary-dark font-medium flex items-center">
+                                Learn More
+                                <i class="ri-arrow-right-line ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#booking"
+                    class="inline-block bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors shadow-md whitespace-nowrap">
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20beauty%20clinic%20interior%20with%20staff%2C%20modern%20luxury%20spa%20reception%20area%2C%20professional%20team%20of%20aestheticians%20and%20doctors%20in%20white%20uniforms%2C%20welcoming%20atmosphere%2C%20soft%20lighting%2C%20pastel%20colors%2C%20plants%2C%20high-end%20beauty%20products%20displayed&width=600&height=500&seq=8&orientation=portrait"
+                        alt="About Our Clinic" class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Glow Beauty Clinic</h2>
+
+                    <p class="text-gray-600 mb-6">
+                        Founded in 2015, Glow Beauty Clinic has established itself as a premier destination for advanced
+                        aesthetic treatments and skincare solutions in the heart of New York City.
+                    </p>
+
+                    <p class="text-gray-600 mb-6">
+                        Our mission is to help clients reveal their natural beauty through personalized treatments
+                        performed by highly trained professionals using the latest technology and premium products.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mt-1">
+                                <i class="ri-medal-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Certified Experts</h3>
+                                <p class="text-gray-600">
+                                    Our team consists of board-certified dermatologists and licensed aestheticians.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mt-1">
+                                <i class="ri-flask-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Premium Products</h3>
+                                <p class="text-gray-600">
+                                    We use only medical-grade, clinically proven skincare products.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mt-1">
+                                <i class="ri-heart-pulse-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Personalized Care</h3>
+                                <p class="text-gray-600">
+                                    Every treatment plan is customized to address your unique needs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mt-1">
+                                <i class="ri-device-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Advanced Technology</h3>
+                                <p class="text-gray-600">
+                                    We invest in the latest equipment for optimal results.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#team"
+                        class="inline-block bg-white text-gray-800 px-8 py-3 !rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition-colors shadow-sm whitespace-nowrap">
+                        Meet Our Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Expert Team</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Meet our highly qualified professionals dedicated to providing you with exceptional care and
+                    results.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20dermatologist%20portrait%2C%20elegant%20woman%20doctor%20in%20white%20coat%2C%20confident%20smile%2C%20soft%20studio%20lighting%2C%20clean%20medical%20background%2C%20professional%20headshot%2C%20pastel%20colors&width=400&height=500&seq=9&orientation=portrait"
+                            alt="Dr. Emily Chen"
+                            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Emily Chen</h3>
+                        <p class="text-primary font-medium mb-3">Medical Director</p>
+                        <p class="text-gray-600 mb-4">
+                            Board-certified dermatologist with over 15 years of experience in cosmetic procedures.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-linkedin-line"></i>
+                            </a>
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20aesthetic%20doctor%20portrait%2C%20handsome%20man%20in%20white%20coat%2C%20confident%20smile%2C%20soft%20studio%20lighting%2C%20clean%20medical%20background%2C%20professional%20headshot%2C%20pastel%20colors&width=400&height=500&seq=10&orientation=portrait"
+                            alt="Dr. Michael Roberts"
+                            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Michael Roberts</h3>
+                        <p class="text-primary font-medium mb-3">Cosmetic Surgeon</p>
+                        <p class="text-gray-600 mb-4">
+                            Specialized in non-surgical facial rejuvenation and injectable treatments.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-linkedin-line"></i>
+                            </a>
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20aesthetician%20portrait%2C%20elegant%20woman%20in%20white%20uniform%2C%20confident%20smile%2C%20soft%20studio%20lighting%2C%20clean%20spa%20background%2C%20professional%20headshot%2C%20pastel%20colors&width=400&height=500&seq=11&orientation=portrait"
+                            alt="Sarah Johnson"
+                            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Sarah Johnson</h3>
+                        <p class="text-primary font-medium mb-3">Lead Aesthetician</p>
+                        <p class="text-gray-600 mb-4">
+                            Expert in advanced facials and chemical peels with 10+ years of experience.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-linkedin-line"></i>
+                            </a>
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20laser%20technician%20portrait%2C%20elegant%20woman%20in%20white%20uniform%2C%20confident%20smile%2C%20soft%20studio%20lighting%2C%20clean%20spa%20background%2C%20professional%20headshot%2C%20pastel%20colors&width=400&height=500&seq=12&orientation=portrait"
+                            alt="Jessica Williams"
+                            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Jessica Williams</h3>
+                        <p class="text-primary font-medium mb-3">Laser Specialist</p>
+                        <p class="text-gray-600 mb-4">
+                            Certified in advanced laser treatments for skin rejuvenation and hair removal.
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-linkedin-line"></i>
+                            </a>
+                            <a href="#"
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Before & After Gallery</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    See the transformative results our clients have achieved with our treatments.
+                </p>
+            </div>
+
+            <!-- Gallery Filter -->
+            <div class="flex flex-wrap justify-center mb-10">
+                <div class="bg-gray-100 p-1 rounded-full inline-flex mb-4">
+                    <button class="px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap"
+                        id="all-filter">All</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-200 whitespace-nowrap"
+                        id="facial-filter">Facials</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-200 whitespace-nowrap"
+                        id="botox-filter">Botox & Fillers</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-200 whitespace-nowrap"
+                        id="laser-filter">Laser</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item facial rounded-lg overflow-hidden shadow-md group cursor-pointer relative">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=before%20and%20after%20facial%20treatment%2C%20split%20image%20showing%20skin%20transformation%2C%20improved%20skin%20texture%20and%20tone%2C%20reduced%20acne%2C%20professional%20clinical%20photography%2C%20neutral%20background%2C%20clear%20lighting&width=600&height=400&seq=13&orientation=landscape"
+                            alt="Facial Treatment Before & After" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary">
+                                <i class="ri-zoom-in-line text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Hydrating Facial</h3>
+                        <p class="text-gray-600 text-sm">Significant improvement in skin hydration and texture after 3
+                            sessions</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item botox rounded-lg overflow-hidden shadow-md group cursor-pointer relative">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=before%20and%20after%20botox%20treatment%2C%20split%20image%20showing%20wrinkle%20reduction%2C%20forehead%20lines%20and%20crows%20feet%20improvement%2C%20professional%20clinical%20photography%2C%20neutral%20background%2C%20clear%20lighting&width=600&height=400&seq=14&orientation=landscape"
+                            alt="Botox Treatment Before & After" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary">
+                                <i class="ri-zoom-in-line text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Botox Treatment</h3>
+                        <p class="text-gray-600 text-sm">Reduction in forehead lines and crow's feet after a single
+                            session</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item laser rounded-lg overflow-hidden shadow-md group cursor-pointer relative">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=before%20and%20after%20laser%20skin%20resurfacing%2C%20split%20image%20showing%20pigmentation%20reduction%2C%20improved%20skin%20tone%20and%20texture%2C%20professional%20clinical%20photography%2C%20neutral%20background%2C%20clear%20lighting&width=600&height=400&seq=15&orientation=landscape"
+                            alt="Laser Treatment Before & After" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary">
+                                <i class="ri-zoom-in-line text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Laser Resurfacing</h3>
+                        <p class="text-gray-600 text-sm">Significant reduction in hyperpigmentation after 2 treatments
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item facial rounded-lg overflow-hidden shadow-md group cursor-pointer relative">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=before%20and%20after%20chemical%20peel%20treatment%2C%20split%20image%20showing%20acne%20scar%20reduction%2C%20improved%20skin%20texture%20and%20tone%2C%20professional%20clinical%20photography%2C%20neutral%20background%2C%20clear%20lighting&width=600&height=400&seq=16&orientation=landscape"
+                            alt="Chemical Peel Before & After" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary">
+                                <i class="ri-zoom-in-line text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Chemical Peel</h3>
+                        <p class="text-gray-600 text-sm">Visible reduction in acne scars after a series of treatments
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item botox rounded-lg overflow-hidden shadow-md group cursor-pointer relative">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=before%20and%20after%20lip%20filler%20treatment%2C%20split%20image%20showing%20enhanced%20lip%20volume%20and%20shape%2C%20professional%20clinical%20photography%2C%20neutral%20background%2C%20clear%20lighting&width=600&height=400&seq=17&orientation=landscape"
+                            alt="Lip Fillers Before & After" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary">
+                                <i class="ri-zoom-in-line text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Lip Fillers</h3>
+                        <p class="text-gray-600 text-sm">Enhanced lip volume and definition after a single treatment</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item laser rounded-lg overflow-hidden shadow-md group cursor-pointer relative">
+                    <div class="relative">
+                        <img src="https://readdy.ai/api/search-image?query=before%20and%20after%20laser%20hair%20removal%2C%20split%20image%20showing%20hair%20reduction%2C%20smooth%20skin%20result%2C%20professional%20clinical%20photography%2C%20neutral%20background%2C%20clear%20lighting&width=600&height=400&seq=18&orientation=landscape"
+                            alt="Laser Hair Removal Before & After" class="w-full h-64 object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary">
+                                <i class="ri-zoom-in-line text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Laser Hair Removal</h3>
+                        <p class="text-gray-600 text-sm">Significant reduction in hair growth after 4 sessions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="inline-block bg-white text-gray-800 px-8 py-3 !rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition-colors shadow-sm whitespace-nowrap">
+                    View Full Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Client Testimonials</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Hear what our clients have to say about their experiences and results.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-lg shadow-md p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "I've been coming to Glow for over a year now for regular facials and occasional Botox. The
+                        staff is incredibly knowledgeable and the results have been amazing. My skin has never looked
+                        better!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20professional%20woman%20portrait%2C%20business%20casual%2C%20confident%20smile%2C%20soft%20studio%20lighting%2C%20neutral%20background%2C%20professional%20headshot%2C%20pastel%20colors&width=100&height=100&seq=19&orientation=squarish"
+                            alt="Katherine Thompson" class="w-12 h-12 rounded-full object-cover object-top">
+                        <div class="ml-4">
+                            <h4 class="text-gray-900 font-semibold">Katherine Thompson</h4>
+                            <p class="text-gray-500 text-sm">Marketing Executive</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-lg shadow-md p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "After struggling with acne scars for years, I finally found relief with the laser treatments at
+                        Glow. Dr. Chen created a personalized treatment plan that has transformed my skin. I couldn't be
+                        happier!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20professional%20man%20portrait%2C%20business%20casual%2C%20confident%20smile%2C%20soft%20studio%20lighting%2C%20neutral%20background%2C%20professional%20headshot%2C%20pastel%20colors&width=100&height=100&seq=20&orientation=squarish"
+                            alt="David Wilson" class="w-12 h-12 rounded-full object-cover object-top">
+                        <div class="ml-4">
+                            <h4 class="text-gray-900 font-semibold">David Wilson</h4>
+                            <p class="text-gray-500 text-sm">Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-lg shadow-md p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "The microblading service at Glow completely changed my morning routine. Sarah is an artist! She
+                        created the most natural-looking brows that perfectly frame my face. Worth every penny!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20professional%20woman%20portrait%2C%20business%20casual%2C%20confident%20smile%2C%20soft%20studio%20lighting%2C%20neutral%20background%2C%20professional%20headshot%2C%20pastel%20colors&width=100&height=100&seq=21&orientation=squarish"
+                            alt="Jennifer Parker" class="w-12 h-12 rounded-full object-cover object-top">
+                        <div class="ml-4">
+                            <h4 class="text-gray-900 font-semibold">Jennifer Parker</h4>
+                            <p class="text-gray-500 text-sm">Interior Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row">
+                <div class="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Book Your Appointment</h2>
+
+                    <p class="text-gray-600 mb-8">
+                        Schedule your consultation or treatment with our expert team. We'll create a personalized plan
+                        to help you achieve your beauty goals.
+                    </p>
+
+                    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Clinic Hours</h3>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Monday - Friday</span>
+                                <span class="text-gray-900 font-medium">9:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Saturday</span>
+                                <span class="text-gray-900 font-medium">10:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Sunday</span>
+                                <span class="text-gray-900 font-medium">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Contact Information</h3>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mt-1">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-900 font-medium">Address</p>
+                                    <p class="text-gray-600">123 Fifth Avenue, New York, NY 10010</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mt-1">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-900 font-medium">Phone</p>
+                                    <p class="text-gray-600">+1 (234) 567-890</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mt-1">
+                                    <i class="ri-mail-line"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-900 font-medium">Email</p>
+                                    <p class="text-gray-600">appointments@glowbeauty.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <form id="booking-form">
+                            <div class="mb-6">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Personal Information</h3>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="first-name" class="block text-gray-700 mb-2">First Name</label>
+                                        <input type="text" id="first-name"
+                                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary text-sm"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <label for="last-name" class="block text-gray-700 mb-2">Last Name</label>
+                                        <input type="text" id="last-name"
+                                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary text-sm"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                                        <input type="email" id="email"
+                                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary text-sm"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                        <input type="tel" id="phone"
+                                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary text-sm"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Service Information</h3>
+
+                                <div class="mb-4">
+                                    <label for="service" class="block text-gray-700 mb-2">Select Service</label>
+                                    <div class="relative">
+                                        <select id="service"
+                                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary appearance-none text-sm pr-8">
+                                            <option value="">Select a service</option>
+                                            <option value="facial">Facial Treatment</option>
+                                            <option value="botox">Botox</option>
+                                            <option value="fillers">Dermal Fillers</option>
+                                            <option value="laser">Laser Treatment</option>
+                                            <option value="chemical-peel">Chemical Peel</option>
+                                            <option value="microblading">Microblading</option>
+                                            <option value="consultation">Consultation</option>
+                                        </select>
+                                        <div
+                                            class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                            <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="date" class="block text-gray-700 mb-2">Preferred Date</label>
+                                        <input type="date" id="date"
+                                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary text-sm date-input"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <label for="time" class="block text-gray-700 mb-2">Preferred Time</label>
+                                        <div class="relative">
+                                            <select id="time"
+                                                class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary appearance-none text-sm pr-8">
+                                                <option value="">Select a time</option>
+                                                <option value="9:00">9:00 AM</option>
+                                                <option value="10:00">10:00 AM</option>
+                                                <option value="11:00">11:00 AM</option>
+                                                <option value="12:00">12:00 PM</option>
+                                                <option value="13:00">1:00 PM</option>
+                                                <option value="14:00">2:00 PM</option>
+                                                <option value="15:00">3:00 PM</option>
+                                                <option value="16:00">4:00 PM</option>
+                                                <option value="17:00">5:00 PM</option>
+                                                <option value="18:00">6:00 PM</option>
+                                            </select>
+                                            <div
+                                                class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                                <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="notes" class="block text-gray-700 mb-2">Additional Notes</label>
+                                <textarea id="notes" rows="3"
+                                    class="w-full px-4 py-3 rounded border border-gray-200 focus:border-primary text-sm"></textarea>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" required>
+                                    <span class="checkmark"></span>
+                                    <span class="ml-2">I agree to the <a href="#"
+                                            class="text-primary hover:underline">terms and conditions</a></span>
+                                </label>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors shadow-md whitespace-nowrap">
+                                Book Appointment
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 block">Glow</a>
+                    <p class="text-gray-400 mb-6">
+                        Premium beauty clinic offering advanced aesthetic treatments and personalized skincare
+                        solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition-colors">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition-colors">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition-colors">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#booking" class="text-gray-400 hover:text-white transition-colors">Book
+                                Appointment</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Facial Treatments</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Botox & Fillers</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Laser Treatments</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Chemical Peels</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Microblading</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Skin Consultation</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-1">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="ml-3 text-gray-400">123 Fifth Avenue, New York, NY 10010</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-1">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="ml-3 text-gray-400">+1 (234) 567-890</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-1">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="ml-3 text-gray-400">info@glowbeauty.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mt-1">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <span class="ml-3 text-gray-400">Mon-Fri: 9am-7pm, Sat: 10am-5pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; 2025 Glow Beauty Clinic. All rights reserved.
+                </p>
+
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                    <div class="flex items-center space-x-3">
+                        <i class="ri-visa-line text-2xl text-gray-400"></i>
+                        <i class="ri-mastercard-line text-2xl text-gray-400"></i>
+                        <i class="ri-paypal-line text-2xl text-gray-400"></i>
+                        <i class="ri-apple-fill text-2xl text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script id="mobile-menu-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenuButton.innerHTML = '<i class="ri-menu-line text-2xl"></i>';
+                } else {
+                    mobileMenuButton.innerHTML = '<i class="ri-close-line text-2xl"></i>';
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.innerHTML = '<i class="ri-menu-line text-2xl"></i>';
+                });
+            });
+        });
+    </script>
+
+    <script id="gallery-filter-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            const allFilter = document.getElementById('all-filter');
+            const facialFilter = document.getElementById('facial-filter');
+            const botoxFilter = document.getElementById('botox-filter');
+            const laserFilter = document.getElementById('laser-filter');
+
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            // Set active filter style
+            function setActiveFilter(activeButton) {
+                [allFilter, facialFilter, botoxFilter, laserFilter].forEach(button => {
+                    button.classList.remove('bg-primary', 'text-white');
+                    button.classList.add('text-gray-700', 'hover:bg-gray-200');
+                });
+
+                activeButton.classList.remove('text-gray-700', 'hover:bg-gray-200');
+                activeButton.classList.add('bg-primary', 'text-white');
+            }
+
+            // Show all items
+            allFilter.addEventListener('click', function () {
+                setActiveFilter(allFilter);
+                galleryItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+            });
+
+            // Filter facial items
+            facialFilter.addEventListener('click', function () {
+                setActiveFilter(facialFilter);
+                galleryItems.forEach(item => {
+                    if (item.classList.contains('facial')) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Filter botox items
+            botoxFilter.addEventListener('click', function () {
+                setActiveFilter(botoxFilter);
+                galleryItems.forEach(item => {
+                    if (item.classList.contains('botox')) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Filter laser items
+            laserFilter.addEventListener('click', function () {
+                setActiveFilter(laserFilter);
+                galleryItems.forEach(item => {
+                    if (item.classList.contains('laser')) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script id="booking-form-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            const bookingForm = document.getElementById('booking-form');
+            const submitButton = bookingForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+
+            bookingForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Get form values
+                const firstName = document.getElementById('first-name').value;
+                const lastName = document.getElementById('last-name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const notes = document.getElementById('notes').value;
+
+                // Simple validation
+                if (!firstName || !lastName || !email || !phone || !service || !date || !time) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                try {
+                    // Send data to backend
+                    const response = await fetch('/api/book-appointment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            firstName,
+                            lastName,
+                            email,
+                            phone,
+                            service,
+                            date,
+                            time,
+                            notes
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Show success message
+                        alert(result.message);
+                        // Reset form
+                        bookingForm.reset();
+                    } else {
+                        // Show error message
+                        alert(result.message || 'An error occurred. Please try again.');
+                    }
+
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert('Network error. Please check your connection and try again.');
+                } finally {
+                    // Reset button state
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                }
+            });
+
+            // Set minimum date to today
+            const dateInput = document.getElementById('date');
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const formattedToday = `${yyyy}-${mm}-${dd}`;
+
+            dateInput.setAttribute('min', formattedToday);
+        });
+    </script>
+
+    <script id="smooth-scroll-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Adjust for fixed header
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
